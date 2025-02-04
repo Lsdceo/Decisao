@@ -1,0 +1,54 @@
+function analisarCodigo(codigo) {
+    // Inicializa as variáveis de controle
+    let temVariavel = false;
+    let temLoop = false;
+    let temCondicional = false;
+    let temFuncao = false;
+
+    // Verifica se há declaração de variável
+    if (codigo.includes("var ") || codigo.includes("let ") || codigo.includes("const ")) {
+        temVariavel = true;
+    }
+
+    // Verifica se há um loop
+    if (codigo.includes("for(") || codigo.includes("while(")) {
+        temLoop = true;
+    }
+
+    // Verifica se há uma estrutura condicional
+    if (codigo.includes("if(")) {
+        temCondicional = true;
+    }
+
+    // Verifica se há uma função
+    if (codigo.includes("function ") || codigo.includes("def ")) {
+        temFuncao = true;
+    }
+
+    // Feedback sobre cada critério
+    console.log(temVariavel ? "Critério 1: Há pelo menos uma declaração de variável." : "Critério 1: Não há declarações de variável.");
+    console.log(temLoop ? "Critério 2: Há pelo menos um loop." : "Critério 2: Não há loops.");
+    console.log(temCondicional ? "Critério 3: Há pelo menos uma estrutura condicional." : "Critério 3: Não há estruturas condicionais.");
+    console.log(temFuncao ? "Critério 4: Há pelo menos uma função." : "Critério 4: Não há funções.");
+
+    // Avaliação final
+    let contador = 0;
+    if (temVariavel) contador++;
+    if (temLoop) contador++;
+    if (temCondicional) contador++;
+    if (temFuncao) contador++;
+
+    if (contador === 4) {
+        console.log("Avaliação final: Bom");
+    } else if (contador === 3) {
+        console.log("Avaliação final: Regular");
+    } else {
+        console.log("Avaliação final: Ruim");
+    }
+}
+
+// Pede ao usuário para inserir um código
+const codigoUsuario = prompt("Por favor, insira seu código para análise:");
+
+// Chama a função de análise com o código inserido pelo usuário
+analisarCodigo(codigoUsuario);

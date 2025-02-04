@@ -1,0 +1,47 @@
+function converterParaNumeralRomano() {
+    // Solicita ao usuário que digite um número entre 1 e 10
+    let numero = parseInt(prompt("Digite um número entre 1 e 10:"));
+
+    let numeralRomano;
+
+    switch (numero) {
+        case 1:
+            numeralRomano = 'I';
+            break;
+        case 2:
+            numeralRomano = 'II';
+            break;
+        case 3:
+            numeralRomano = 'III';
+            break;
+        case 4:
+            numeralRomano = 'IV';
+            break;
+        case 5:
+            numeralRomano = 'V';
+            break;
+        case 6:
+            numeralRomano = 'VI';
+            break;
+        case 7:
+            numeralRomano = 'VII';
+            break;
+        case 8:
+            numeralRomano = 'VIII';
+            break;
+        case 9:
+            numeralRomano = 'IX';
+            break;
+        case 10:
+            numeralRomano = 'X';
+            break;
+        default:
+            console.log("Por favor, insira um número entre 1 e 10.");
+            return; // Sai da função se o número não estiver no intervalo
+    }
+
+    console.log(`O número ${numero} em numeral romano é: ${numeralRomano}`);
+}
+
+// Inicia o conversor
+converterParaNumeralRomano();

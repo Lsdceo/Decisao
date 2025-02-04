@@ -1,0 +1,80 @@
+let usuarios = [];
+
+while (true) {
+  let op = parseInt(prompt("Digite o que deseja: \n1. Cadastrar\n2. Editar\n3. Excluir\n4. Listar\n0. Sair"));
+
+  switch (op) {
+    case 1: // Cadastrar
+      let nome = prompt("Digite seu nome:");
+      let senha = prompt("Digite uma senha de 8 dígitos:");
+      if (senha.length !== 8) {
+        console.log("Senha inválida. A senha deve ter exatamente 8 dígitos.");
+      } else {
+        usuarios.push({
+          nome,
+          senha
+        });
+        console.log(`Cadastro realizado. Seu nome é ${nome} e sua senha é ${senha}.`);
+      }
+      break;
+
+    case 2: // Editar
+      let editIndex = parseInt(prompt("Qual usuário deseja editar? Digite o índice (0 a ${usuarios.length - 1}):"));
+      if (editIndex >= 0 && editIndex < usuarios.length) {
+        let edit = parseInt(prompt("O que deseja editar? 1. Nome\n2. Senha"));
+        switch (edit) {
+          case 1:
+            let nomeN = prompt("Digite seu novo nome:");
+            usuarios[editIndex].nome = nomeN;
+            console.log(`Nome atualizado para ${nomeN}.`);
+            break;
+          case 2:
+            let senhaN = prompt("Digite sua nova senha de 8 dígitos:");
+            if (senhaN.length !== 8) {
+              console.log("Senha inválida. A senha deve ter exatamente 8 dígitos.");
+            } else {
+              usuarios[editIndex].senha = senhaN;
+              console.log("Senha atualizada com sucesso.");
+            }
+            break;
+          default:
+            console.log("Escolha uma opção válida.");
+        }
+      } else {
+        console.log("Índice inválido.");
+      }
+      break;
+
+    case 3: // Excluir
+      let excluirIndex = parseInt(prompt("Qual usuário deseja excluir? Digite o índice (0 a ${usuarios.length - 1}):"));
+      if (excluirIndex >= 0 && excluirIndex < usuarios.length) {
+        usuarios.splice(excluirIndex, 1);
+        console.log("Usuário excluído com sucesso.");
+      } else {
+        console.log("Índice inválido.");
+      }
+      break;
+
+    case 4: // Listar
+      if (usuarios.length === 0) {
+        console.log("Nenhum usuário cadastrado.");
+      } else {
+        console.log("Usuários cadastrados:");
+        usuarios.forEach((usuario, index) => {
+          console.log(`${index}: Nome: ${usuario.nome}, Senha: ${usuario.senha}`);
+        });
+      }
+      break;
+
+    case 0: // Sair
+      console.log("Saindo...");
+      break;
+
+    default:
+      console.log("Escolha uma opção válida.");
+  }
+
+  if (op === 0) {
+    break;
+  }
+}

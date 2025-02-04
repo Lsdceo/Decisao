@@ -1,0 +1,15 @@
+let s = prompt("Insira uma senha de 8 dígitos com:\n 1 Letra maiuscula\n 1 Letra minúscula\n 1 Número\n 1 caractere especial (!@#$%^&*)")
+
+if (s.length < 8) {
+    console.log("A Senha deve ter pelo menos 8 digitos.");
+}
+
+if (/^[0-9]+$/.test(s)) {
+    console.log("Erro, Você apenas digitou números.");
+} else if (/^[a-zA-Z]+$/.test(s)) {
+    console.log("Erro, Você apenas digitou letras.");
+} else if (/^[!@#$%^&*(),.?":{}|<>]+$/.test(s)) {
+    console.log("Erro, Você apenas digitou caracteres especiais.");
+} else {
+    console.log("Sua senha é " + s);
+}

@@ -1,0 +1,69 @@
+// Função para calcular o montante final
+function calcularMontante(capitalInicial, taxaJuros, tempo, frequencia) {
+  let n;
+
+  // Definindo a frequência de capitalização
+  if (frequencia === "anual") {
+    n = 1;
+  } else if (frequencia === "mensal") {
+    n = 12;
+  } else if (frequencia === "diária") {
+    n = 365;
+  } else {
+    console.log("Frequência inválida. Por favor, escolha entre anual, mensal ou diária.");
+    return;
+  }
+
+  // Convertendo a taxa de juros de percentual para decimal
+  let r = taxaJuros / 100;
+
+  // Calculando o montante final
+  let montante = capitalInicial * Math.pow((1 + r / n), n * tempo);
+  return montante.toFixed(2); // Retorna o montante formatado com duas casas decimais
+}
+
+// Função para projetar lucros em intervalos
+function projetarLucros(capitalInicial, taxaJuros, tempo, frequencia) {
+  let n;
+
+  // Definindo a frequência de capitalização
+  if (frequencia === "anual") {
+    n = 1;
+  } else if (frequencia === "mensal") {
+    n = 12;
+  } else if (frequencia === "diária") {
+    n = 365;
+  } else {
+    console.log("Frequência inválida. Por favor, escolha entre anual, mensal ou diária.");
+    return;
+  }
+
+  // Convertendo a taxa de juros de percentual para decimal
+  let r = taxaJuros / 100;
+
+  console.log("Projeção de lucros a cada 6 meses:");
+  for (let t = 0.5; t <= tempo; t += 0.5) {
+    let montante = capitalInicial * Math.pow((1 + r / n), n * t);
+    let lucro = montante - capitalInicial;
+    console.log(`Após ${t} anos: Montante = R$ ${montante.toFixed(2)}, Lucro = R$ ${lucro.toFixed(2)}`);
+  }
+}
+
+// Coletando dados do usuário
+let capitalInicial = parseFloat(prompt("Digite o capital inicial:"));
+let taxaJuros = parseFloat(prompt("Digite a taxa de juros anual (em %):"));
+let tempo = parseInt(prompt("Digite o tempo em anos:"));
+let frequencia = prompt("Digite a frequência de capitalização (anual, mensal, diária):").toLowerCase();
+
+// Calculando o montante final
+let montanteFinal = calcularMontante(capitalInicial, taxaJuros, tempo, frequencia);
+
+// Exibindo o resultado
+if (montanteFinal) {
+  let lucro = montanteFinal - capitalInicial;
+  console.log(`O montante final após ${tempo} anos é: R$ ${montanteFinal}`);
+  console.log(`O lucro total é: R$ ${lucro.toFixed(2)}`);
+
+  // Projeção de lucros
+  projetarLucros(capitalInicial, taxaJuros, tempo, frequencia);
+}

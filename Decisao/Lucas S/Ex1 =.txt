@@ -1,0 +1,27 @@
+let peso = parseFloat(prompt("Digite seu peso (kg)"));
+let altura = parseFloat(prompt("Digite sua altura (m)"));
+let idade = parseInt(prompt("Digite sua idade"));
+
+let imc = peso / Math.pow(altura, 2);
+let classificacao = "";
+
+if (idade > 65) {
+    imc -= 1; // Ajusta o IMC para pessoas acima de 65 anos
+}
+
+if (imc < 18.5) {
+    classificacao = "Abaixo do peso";
+} else if (imc >= 18.5 && imc < 24.9) {
+    classificacao = "Peso normal";
+} else if (imc >= 25 && imc < 29.9) {
+    classificacao = "Sobrepeso";
+} else if (imc >= 30 && imc < 34.9) {
+    classificacao = "Obesidade I";
+} else if (imc >= 35 && imc < 39.9) {
+    classificacao = "Obesidade II";
+} else {
+    classificacao = "Obesidade III";
+}
+
+console.log(`Seu IMC é: ${imc}`);
+console.log(`Classificação: ${classificacao}`);

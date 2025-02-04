@@ -1,0 +1,23 @@
+let n1 = parseInt(prompt("Digite sua primeira nota"))
+let n2 = parseInt(prompt ("Digite sua segunda nota"))
+let n3 = parseInt(prompt ("Digite sua terceira nota"))
+
+let m = (n1 * 1 + n2 * 2 + n3 * 3) / (1 + 2 + 3);
+let classificacao
+
+if (n1 === 0 || n2 === 0 || n3 === 0) {
+    console.log("Desclassificado, pois você obeteve uma nota 0");
+} else if (m >= 9) {
+    classificacao = "Excelente";
+} else if (m <= 7 && m < 9) {
+    classificacao = "Bom";
+} else if (m <= 5 && m < 7) {
+    classificacao = "Regular";
+} else if (m < 5) {
+    classificacao = "Ruim";
+} else {
+    classificacao = "Desclassificado";
+}
+
+console.log(`Sua Média é: ${m}`);
+console.log(`Classificação: ${classificacao}`);

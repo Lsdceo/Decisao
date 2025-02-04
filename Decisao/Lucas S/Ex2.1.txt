@@ -1,0 +1,44 @@
+// Definindo a capacidade de assentos por classe
+const capacidade = {
+  economica: 10,
+  executiva: 5,
+  primeiraClasse: 3
+};
+
+// Inicializando a disponibilidade de assentos
+let assentosDisponiveis = {
+  economica: capacidade.economica,
+  executiva: capacidade.executiva,
+  primeiraClasse: capacidade.primeiraClasse
+};
+
+// Função para reservar assentos
+function reservarAssentos(classe, numPassageiros, precisaAdjacentes) {
+  if (assentosDisponiveis[classe] >= numPassageiros) {
+    if (precisaAdjacentes) {
+      // Verifica se há assentos adjacentes disponíveis
+      if (assentosDisponiveis[classe] >= numPassageiros) {
+        assentosDisponiveis[classe] -= numPassageiros; // Reserva os assentos
+        console.log(`Reserva confirmada: ${numPassageiros} assentos na classe ${classe} (adjacentes).`);
+      } else {
+        console.log(`Indisponibilidade: Não há assentos adjacentes suficientes na classe ${classe}.`);
+      }
+    } else {
+      assentosDisponiveis[classe] -= numPassageiros; // Reserva os assentos
+      console.log(`Reserva confirmada: ${numPassageiros} assentos na classe ${classe}.`);
+    }
+  } else {
+    console.log(`Indisponibilidade: Não há assentos suficientes na classe ${classe}.`);
+  }
+}
+
+// Exemplo de uso
+let classe = prompt("Escolha a classe (econômica, executiva, primeira classe):").toLowerCase();
+let numPassageiros = parseInt(prompt("Digite o número de passageiros:"));
+let precisaAdjacentes = confirm("Os passageiros precisam de assentos adjacentes?");
+
+if (classe === "economica" || classe === "executiva" || classe === "primeira classe") {
+  reservarAssentos(classe, numPassageiros, precisaAdjacentes);
+} else {
+  console.log("Classe inválida. Por favor, escolha entre econômica, executiva ou primeira classe.");
+}

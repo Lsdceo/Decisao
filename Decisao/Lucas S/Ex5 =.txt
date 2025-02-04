@@ -1,0 +1,45 @@
+let saldoI = 1000;
+
+while (true) {
+  let opcao = parseInt(prompt("Escolha o que deseja \n 1. Sacar \n 2. Depositar \n 3. Consultar \n 4. Sair"));
+
+  switch (opcao) {
+    case 1: // Saque
+      let saque = parseInt(prompt("Digite quanto quer sacar"));
+      if (saque > saldoI) {
+        console.log("Você não tem saldo suficiente");
+      } else if (saque <= 0) {
+        console.log("Digite um valor válido para sacar");
+      } else {
+        saldoI -= saque; // Atualiza o saldo
+        console.log(`Saque de R$ ${saque} realizado com sucesso. Saldo atual: R$ ${saldoI}`);
+      }
+      break;
+
+    case 2: // Depósito
+      let dep = parseInt(prompt("Digite o quanto quer depositar"));
+      if (dep <= 0) {
+        console.log("Digite um valor válido para depositar");
+      } else {
+        saldoI += dep; // Atualiza o saldo
+        console.log(`Depósito de R$ ${dep} realizado com sucesso. Saldo atual: R$ ${saldoI}`);
+      }
+      break;
+
+    case 3: // Consulta
+      console.log(`Saldo atual: R$ ${saldoI}`);
+      break;
+
+    case 4: // Sair
+      console.log("Saindo do sistema...");
+      break; // Sai do loop
+
+    default:
+      console.log("Escolha uma opção válida");
+  }
+
+  // Se o usuário escolher sair, quebra o loop
+  if (opcao === 4) {
+    break;
+  }
+}

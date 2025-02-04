@@ -1,0 +1,83 @@
+let medida = parseFloat(prompt("Digite uma medida: "));
+let unidadeOrigem = prompt("Digite a unidade de origem (km, milhas, metros, pés): ").toLowerCase();
+let unidadeDestino = prompt("Digite a unidade de destino (km, milhas, metros, pés): ").toLowerCase();
+
+let resultado;
+
+switch (unidadeOrigem) {
+  case 'km':
+    switch (unidadeDestino) {
+      case 'milhas':
+        resultado = medida * 0.621371;
+        break;
+      case 'metros':
+        resultado = medida * 1000;
+        break;
+      case 'pés':
+        resultado = medida * 3280.84;
+        break;
+      default:
+        console.log('Unidade de destino não reconhecida.');
+        break;
+    }
+    break;
+
+  case 'milhas':
+    switch (unidadeDestino) {
+      case 'km':
+        resultado = medida / 0.621371;
+        break;
+      case 'metros':
+        resultado = medida * 1609.34;
+        break;
+      case 'pés':
+        resultado = medida * 5280;
+        break;
+      default:
+        console.log('Unidade de destino não reconhecida.');
+        break;
+    }
+    break;
+
+  case 'metros':
+    switch (unidadeDestino) {
+      case 'km':
+        resultado = medida / 1000;
+        break;
+      case 'milhas':
+        resultado = medida / 1609.34;
+        break;
+      case 'pés':
+        resultado = medida * 3.28084;
+        break;
+      default:
+        console.log('Unidade de destino não reconhecida.');
+        break;
+    }
+    break;
+
+  case 'pés':
+    switch (unidadeDestino) {
+      case 'km':
+        resultado = medida / 3280.84;
+        break;
+      case 'milhas':
+        resultado = medida / 5280;
+        break;
+      case 'metros':
+        resultado = medida / 3.28084;
+        break;
+      default:
+        console.log('Unidade de destino não reconhecida.');
+        break;
+    }
+    break;
+
+  default:
+    console.log('Unidade de origem não reconhecida.');
+    break;
+}
+
+if (resultado !== undefined) {
+  console.log(`${medida} ${unidadeOrigem} é igual a ${resultado.toFixed(2)} ${unidadeDestino}.`);
+}

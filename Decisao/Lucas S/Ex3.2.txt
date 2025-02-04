@@ -1,0 +1,44 @@
+let numero1 = parseFloat(prompt("Digite um número: "));
+let numero2 = parseFloat(prompt("Digite outro número: "));
+let operacao = prompt("Escolha uma operação: +, -, *, /, %, raiz, potencia.");
+
+switch (operacao) {
+  case '+':
+    console.log(`${numero1} + ${numero2} = ${numero1 + numero2}`);
+    break;
+  case '-':
+    console.log(`${numero1} - ${numero2} = ${numero1 - numero2}`);
+    break;
+  case '*':
+    console.log(`${numero1} * ${numero2} = ${numero1 * numero2}`);
+    break;
+  case '/':
+    if (numero2 !== 0) {
+      console.log(`${numero1} / ${numero2} = ${(numero1 / numero2).toFixed(2)}`);
+    } else {
+      console.log('Erro: Divisão por zero.');
+    }
+    break;
+  case '%':
+    if (numero2 !== 0) {
+      console.log(`${numero1} % ${numero2} = ${numero1 % numero2}`);
+    } else {
+      console.log('Erro: Módulo por zero.');
+    }
+    break;
+  case 'raiz':
+    let escolhaRaiz = prompt("Deseja calcular a raiz quadrada de qual número? (1 para o primeiro, 2 para o segundo): ");
+    if (escolhaRaiz === '1') {
+      console.log(`Raiz quadrada de ${numero1} = ${Math.sqrt(numero1).toFixed(2)}`);
+    } else if (escolhaRaiz === '2') {
+      console.log(`Raiz quadrada de ${numero2} = ${Math.sqrt(numero2).toFixed(2)}`);
+    } else {
+      console.log('Opção inválida para raiz quadrada.');
+    }
+    break;
+  case 'potencia':
+    console.log(`${numero1} elevado a ${numero2} = ${Math.pow(numero1, numero2).toFixed(2)}`);
+    break;
+  default:
+    console.log('Operação não reconhecida.');
+}

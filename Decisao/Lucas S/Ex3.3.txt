@@ -1,0 +1,44 @@
+let dia = parseInt(prompt("Digite o dia: "));
+let mes = parseInt(prompt("Digite o mês: "));
+let ano = parseInt(prompt("Digite o ano: "));
+
+if (mes < 1 || mes > 12) {
+  console.log('Mês inválido. Insira um valor entre 1 e 12.');
+} else {
+  let diasNoMes;
+
+  switch (mes) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+      diasNoMes = 31;
+      break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      diasNoMes = 30;
+      break;
+    case 2:
+      // Verifica se é ano bissexto
+      if ((ano % 4 === 0 && ano % 100 !== 0) || ano % 400 === 0) {
+        diasNoMes = 29;
+      } else {
+        diasNoMes = 28;
+      }
+      break;
+    default:
+      diasNoMes = 0; // Caso nunca será atingido com a validação anterior
+  }
+
+  // Validação do dia
+  if (dia > 0 && dia <= diasNoMes) {
+    console.log(`A data ${dia}/${mes}/${ano} é válida.`);
+  } else {
+    console.log(`A data ${dia}/${mes}/${ano} é inválida.`);
+  }
+}

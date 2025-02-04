@@ -1,0 +1,36 @@
+let cor = prompt("Digite o nome de uma cor em português:").toLowerCase();
+
+switch (cor) {
+    case 'vermelho':
+        console.log('Red');
+        break;
+    case 'azul':
+        console.log('Blue');
+        break;
+    case 'verde':
+        console.log('Green');
+        break;
+    case 'amarelo':
+        console.log('Yellow');
+        break;
+    case 'preto':
+        console.log('Black');
+        break;
+    case 'branco':
+        console.log('White');
+        break;
+    case 'rosa':
+        console.log('Pink');
+        break;
+    case 'laranja':
+        console.log('Orange');
+        break;
+    case 'roxo':
+        console.log('Purple');
+        break;
+    case 'cinza':
+        console.log('Gray');
+        break;
+    default:
+        console.log('Cor não reconhecida. Certifique-se de digitar uma cor válida em português.');
+}

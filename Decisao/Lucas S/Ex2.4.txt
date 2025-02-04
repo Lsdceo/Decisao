@@ -1,0 +1,51 @@
+// Lista pré-definida de filmes
+const filmes = [
+    { titulo: "Mad Max: Estrada da Fúria", genero: "ação", ano: 2015, ator: "Tom Hardy" },
+    { titulo: "Os Vingadores", genero: "ação", ano: 2012, ator: "Robert Downey Jr." },
+    { titulo: "A Grande Aposta", genero: "drama", ano: 2015, ator: "Christian Bale" },
+    { titulo: "A Rede Social", genero: "drama", ano: 2010, ator: "Jesse Eisenberg" },
+    { titulo: "A Culpa é das Estrelas", genero: "drama", ano: 2014, ator: "Shailene Woodley" },
+    { titulo: "Deadpool", genero: "comédia", ano: 2016, ator: "Ryan Reynolds" },
+    { titulo: "A Morte te Dá Parabéns", genero: "comédia", ano: 2017, ator: "Jessica Rothe" },
+    { titulo: "Toy Story 3", genero: "animação", ano: 2010, ator: "Tom Hanks" },
+    { titulo: "Jurassic World", genero: "ação", ano: 2015, ator: "Chris Pratt" },
+    { titulo: "O Lobo de Wall Street", genero: "comédia", ano: 2013, ator: "Leonardo DiCaprio" }
+];
+
+// Função para recomendar um filme
+function recomendarFilme(genero, ano, atorFavorito) {
+    let recomendacoes = filmes;
+
+    // Filtra por gênero
+    if (genero) {
+        recomendacoes = recomendacoes.filter(filme => filme.genero === genero);
+    }
+
+    // Filtra por ano
+    if (ano === "antes") {
+        recomendacoes = recomendacoes.filter(filme => filme.ano < 2010);
+    } else if (ano === "depois") {
+        recomendacoes = recomendacoes.filter(filme => filme.ano > 2010);
+    }
+
+    // Filtra por ator favorito
+    if (atorFavorito) {
+        recomendacoes = recomendacoes.filter(filme => filme.ator === atorFavorito);
+    }
+
+    // Se houver recomendações, retorna o primeiro filme da lista
+    if (recomendacoes.length > 0) {
+        return recomendacoes[0].titulo; // Retorna o título do primeiro filme recomendado
+    } else {
+        return "Nenhum filme encontrado com essas preferências.";
+    }
+}
+
+// Coletando preferências do usuário
+let genero = prompt("Qual gênero você prefere? (ação, comédia, drama)");
+let ano = prompt("Você prefere filmes lançados antes ou depois de 2010? (antes de 2010 / depois de 2010)");
+let atorFavorito = prompt("Qual é o seu ator favorito? (opcional)");
+
+// Recomendando um filme
+let filmeRecomendado = recomendarFilme(genero, ano, atorFavorito);
+console.log(`Filme recomendado: ${filmeRecomendado}`);
